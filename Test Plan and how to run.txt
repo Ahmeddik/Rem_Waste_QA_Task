@@ -1,0 +1,116 @@
+🧪 Test Plan – ToDo List App (REM Waste Task)
+1. ✅ What is Being Tested
+This plan covers functional testing for a ToDo List web application built using:
+
+Backend: Node.js v16, Express.js
+
+Frontend: React
+
+Database: MongoDB
+
+The task is split into:
+
+✅ UI Automation Testing using Selenium (Java), Cucumber, TestNG
+
+✅ API Testing using Postman
+
+2. 🧭 Test Coverage Areas
+🔹 UI Automation Testing (Selenium)
+Test Scenarios:
+
+User Registration – New user creation
+
+User Login – Authenticate using email & password
+
+Add Task – Create new todo
+
+Mark Task as Done – Toggle the done status
+
+Delete Task – Remove task from list
+
+Features:
+
+Test data stored in data.properties
+
+All tests automated using Selenium WebDriver + Cucumber + TestNG
+
+🔹 API Testing (Postman)
+Tested Endpoints:
+
+POST /register – Create user
+
+POST /login – Log in and receive cookie/token
+
+POST /todos – Add a new task
+
+GET /todos – Retrieve all tasks
+
+PUT /todos/:id – Mark task as done
+
+DELETE /todos/:id – Delete a task
+
+Token/cookie is reused in requests to authorize the user. Task id can be extracted from GET /todos and used in PUT and DELETE endpoints.
+
+3. 🧰 Tools Used and Why
+Tool	Purpose
+Selenium WebDriver	Automate browser UI testing
+Java + TestNG	Test execution and assertions
+Cucumber	BDD-style test scenarios (Gherkin)
+Postman	API testing, token/cookie handling
+Maven	Build/test runner for Java project
+MongoDB	Backend data storage
+Node.js v16	Server-side logic
+
+4. ▶️ How to Run the Tests
+🧪 UI Tests (Selenium + Java)
+Clone and run the backend: npm start inside /api
+
+Run frontend: npm start inside /clint
+
+Open the Java test project:
+
+and run the test runner file
+
+Execute using Maven:
+
+bash
+Copy
+Edit
+mvn clean test
+📬 API Tests (Postman)
+Launch the app locally
+
+Open Postman collection
+
+Run endpoints in order:
+
+POST /login (store cookie)
+
+POST /todos
+
+GET /todos → extract task id
+
+PUT /todos/:id
+
+DELETE /todos/:id
+
+5. 📌 Assumptions & Limitations
+✅ Assumptions
+Local environment: http://localhost:3000 (UI), http://localhost:4000 (API)
+
+MongoDB is running locally
+
+Token is passed via cookies
+
+User must be logged in for all task-related actions
+
+⚠️ Limitations
+No performance or load testing
+
+The app doesn't handle duplicate data
+
+Some cases cause the backend to fall as try registering with registered email 
+
+UI tests only in Chrome
+
+
